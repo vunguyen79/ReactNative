@@ -8,6 +8,7 @@ import {
 } from 'react-native'
 
 import {colors} from '../theme'
+import CenterMessage from '../Components/CenterMessage'
 
 export default class Cities extends React.Component{
     static navigationOptions = {
@@ -21,7 +22,6 @@ export default class Cities extends React.Component{
 
     viewCity = (city) => {
         this.props.navigation.navigate('City', { city })
-
     }
 
     render(){
@@ -29,6 +29,11 @@ export default class Cities extends React.Component{
         return (
         <ScrollView>
             <View>
+                {
+                    !this.props.screenProps.cities.length && (
+                        <CenterMessage  message="No cities" />
+                    )
+                }
                 {
                     this.props.screenProps.cities.map((city, index) => 
                     (

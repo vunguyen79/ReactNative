@@ -10,10 +10,10 @@ import {
 } from 'react-native'
 
 import { colors } from '../theme'
+import CenterMessage from '../Components/CenterMessage'
 
 export default class City extends React.Component{
     static navigationOptions = (props) => {
-        console.log('props:', props)
         return {
             title: props.navigation.state.params.city.city,
             headerTitleStyle: {
@@ -33,6 +33,7 @@ export default class City extends React.Component{
             [key]: value
         })
     }
+    
     addLocation = () => {
         if(this.state.name ==='' || this.state.info ==='') return
         const { city } = this.props.navigation.state.params
@@ -40,6 +41,7 @@ export default class City extends React.Component{
             name: this.state.name,
             info: this.state.info
         }
+
         this.props.srceenProps.addLocation(location, city)
         this.setState({
             name: '',
@@ -52,13 +54,15 @@ export default class City extends React.Component{
         return (
         <View style={{ flex: 1 }}>
         {
+            !city.locations.length && (<CenterMessage message='No locations' />)
+        }
+        {
             city.locations.map((location, index) => (
-                <View>
-                    <Text>{location.name}</Text>
+                <View style={style.locationContainer}>
+                    <Text style={style.name}>{location.name}</Text>
+                    <Text style={style.info}>{location.info}</Text>
                 </View>
-            )
-        
-        )
+            ))
         }
             <TextInput 
             value = {this.state.name}
@@ -69,7 +73,7 @@ export default class City extends React.Component{
             />
              <TextInput 
             value = {this.state.info}
-            placeholder='Location name'
+            placeholder='State name'
             onChangeText={val => this.onChangeText('info', val)}
             style={[styles.input, styles.input2]}
             placeholderTextColor='#fff'
@@ -92,11 +96,15 @@ export default class City extends React.Component{
 const styles = StyleSheet.create({
     locationContainer: {
         padding: 10,
-        borderBottomColor: color.primary,
+        borderBottomColor: colors.primary,
         borderBottomWidth: 2
     },
-    name: {},
-    info: {},
+    name: {
+        fontSize: 20
+    },
+    info: {
+        color: 'rgba(0, 0, 0, .5)'
+    },
     input:{
         position: 'absolute',
         height: 50,
