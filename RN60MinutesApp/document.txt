@@ -1,0 +1,4 @@
+Ctrl + ` = open terminal
+- Run ios
+    + Open terminal
+        react-native run-ios 
