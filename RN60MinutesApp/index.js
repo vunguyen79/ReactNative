@@ -3,4 +3,4 @@ import App from './App';
 
 console.disableYellowBox = true;
 
-AppRegistry.registerComponent('RN60MinutesApp', () => App);
+AppRegistry.registerComponent('RN60MinutesApp1', () => App);

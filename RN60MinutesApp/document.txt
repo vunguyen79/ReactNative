@@ -1,3 +1,12 @@
+$ react-native -v
+react-native-cli: 2.0.1
+react-native: n/a - not inside a React Native project directory
+$ npm update
+$ react-native -v
+react-native-cli: 2.0.1
+react-native: 0.44.0
+$ react-native run-ios
+
 Ctrl + ` = open terminal
 - Run ios
     + Open terminal
