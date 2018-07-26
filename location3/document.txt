@@ -1,0 +1,132 @@
+1. create app
+    react-native init location3
+
+2. create structure app
+    yarn add react-navigation uuid
+    - add folder 
+        src
+            AddCity
+                AddCity.js
+            Cities
+                Cities.js
+                City.js
+            Components
+            index.js
+            theme.js
+3. add content in file
+    theme.js
+        const colors = {
+            primary: '#D81B60'
+        }
+
+        export {
+            colors
+        }
+
+    - AddCity.js
+        import React from 'react'
+        import {
+            View,
+            Text,
+            StyleSheet
+        } from 'react-native'
+
+        export default class AddCity extends React.Component {
+            render(){
+                return (
+                    <View>
+                        <Text>Hello from Add City </Text>
+                    </View>
+                )
+            }
+        }
+
+    - Cities.js
+        import React from 'react'
+        import {
+            View,
+            Text,
+            StyleSheet
+        } from 'react-native'
+
+        export default class Cities extends React.Component {
+            render(){
+                return (
+                    <View>
+                        <Text>Hello from Cities </Text>
+                    </View>
+                )
+            }
+        }
+    
+    - City.js
+        import React from 'react'
+        import {
+            View,
+            Text,
+            StyleSheet
+        } from 'react-native'
+
+        export default class City extends React.Component {
+            render(){
+                return (
+                    <View>
+                        <Text>Hello from City </Text>
+                    </View>
+                )
+            }
+        }
+
+    - index.js
+        import React from 'react'
+
+        import AddCity from './AddCity/AddCity'
+        import City from './Cities/City'
+        import Cities from './Cities/Cities'
+        import {colors} from './theme'
+
+        import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'
+
+        const CitiesNav = createStackNavigator({
+            Cities: { screen: Cities },
+            City: { screen: City }
+        }, {
+            navigationOptions: {
+                headerStyle: {
+                    backgroundColor: colors.primary
+                },
+                headerTintColor: '#fff'
+            }
+        })
+
+        const Tabs = createBottomTabNavigator({
+            Cities: { screen: CitiesNav },
+            AddCity: { screen: AddCity }
+        })
+
+        export default Tabs
+
+4. Modifile App.js
+        /**
+        * Sample React Native App
+        * https://github.com/facebook/react-native
+        *
+        * @format
+        * @flow
+        */
+
+        import React, {Component} from 'react';
+        import {Platform, StyleSheet, Text, View} from 'react-native';
+
+        import Tabs from './src'
+
+
+        export default class App extends Component {
+        render() {
+            return (
+            <Tabs />
+            );
+        }
+        }
+
+    
