@@ -6,8 +6,7 @@ import {
 } from 'react-native'
 
 export default class Cities extends React.Component {
-    render(){
-        console.log('props:', this.props)
+    render() {
         return (
             <View>
                 <Text>Hello from Cities </Text>

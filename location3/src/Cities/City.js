@@ -7,6 +7,7 @@ import {
 
 export default class City extends React.Component {
     render(){
+        
         return (
             <View>
                 <Text>Hello from City </Text>

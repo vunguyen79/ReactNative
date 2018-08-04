@@ -5,12 +5,11 @@ import {
     StyleSheet
 } from 'react-native'
 
-export default class Cities extends React.Component {
-    render(){
-        console.log('props:', this.props)
+export default class AddCity extends React.Component {
+    render() {
         return (
             <View>
-                <Text>Hello from Cities </Text>
+                <Text>Hello from AddCity </Text>
             </View>
         )
     }

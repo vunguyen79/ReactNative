@@ -1,0 +1,99 @@
+
+
+
+1. Create folder src
+    - AddCity
+            import React from 'react'
+            import {
+                View,
+                Text,
+                StyleSheet
+            } from 'react-native'
+
+            export default class AddCity extends React.Component {
+                render() {
+                    return (
+                        <View>
+                            <Text>Hello from AddCity </Text>
+                        </View>
+                    )
+                }
+            }
+
+    - Cities
+        Cities.js
+            import React from 'react'
+            import {
+                View,
+                Text,
+                StyleSheet
+            } from 'react-native'
+
+            export default class Cities extends React.Component {
+                render() {
+                    return (
+                        <View>
+                            <Text>Hello from Cities </Text>
+                        </View>
+                    )
+                }
+            }
+
+        City.js
+            import React from 'react'
+            import {
+                View,
+                Text,
+                StyleSheet
+            } from 'react-native'
+
+            export default class City extends React.Component {
+                render() {
+                    return (
+                        <View>
+                            <Text>Hello from City2</Text>
+                        </View>
+                    )
+                }
+            }
+
+    - index.js
+        import { colors } from './theme'
+        import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'
+        const CitiesNav = createStackNavigator({
+            Cities: { screen: Cities }
+        },{
+            navigationOptions: {
+                headerStyle: {
+                    backgroundColor: colors.primary
+                },
+                headerTintColor: '#fff'
+            }
+        })
+        const Tabs = createBottomTabNavigator({
+            Cities: {screen: CitiesNav},
+            AddCity: {screen: AddCity}
+        })
+        export default Tabs 
+
+        //yarn add react-navigation uuid
+    - theme.js
+        const colors = {
+            primary: '#D81B60'
+        }
+        export {
+            colors
+        }
+
+    React will call it from App.js
+            import React, {Component} from 'react';
+            import {Platform, StyleSheet, Text, View} from 'react-native';
+
+            import Tabs from './src'
+
+            export default class App extends Component {
+            render()
+                {
+                    return <Tabs />
+                }
+            }
